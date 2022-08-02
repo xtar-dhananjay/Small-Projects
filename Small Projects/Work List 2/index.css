@@ -1,0 +1,150 @@
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto Slab', serif;
+    }
+
+    body{
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(161, 15, 245);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #container{
+        width: 600px;
+        min-height: 565px;
+        padding: 25px 40px;
+        background: white;
+        border-radius: 10px;
+    }
+
+    #header{
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 35px;
+        margin-top: 12px;
+    }
+
+    #inputdiv{
+        width: 100%;
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    #inputdiv #input{
+        width: 100%;
+        padding: 0px 15px;
+        font-size: 19px;
+        border: 1px solid #353535;
+        outline: 1px;
+        border-radius: 5px;
+    }
+
+    #inputdiv .add{
+        width: 78px;
+        margin-left: 5px;
+        height: 50px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: rgb(161, 15, 245);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    #inputdiv button.active{
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+
+    #inputdiv button #icon1{
+        font-size: 32px;
+        color: white;
+    }
+
+    #list {
+        width: 100%;
+        max-height: 250px;
+        min-height: 250px;
+        width: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    #list li{
+        width: 100%;
+        position: relative;
+        list-style: none;
+        padding: 0px 15px;
+        font-size: 19px;
+        outline: 1px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        min-height: 55px;
+        display: flex;
+        align-items: center;
+        line-height: 55px;
+        background: #e8e8e8;
+        overflow: hidden;
+        cursor: default;
+    }
+
+    #list li #del {
+        width: 65px;
+        position: absolute;
+        right: -65px;
+        color: white;
+        text-align: center;
+        background-color: red;
+        height: 55px;
+        border-radius: 0 3px 3px 0;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+    }
+
+    #list li:hover #del{
+        right: 0%;
+    }
+
+    #footer{
+        width: 100%;
+        display: flex;
+        height: 50px;
+        margin-top: 22px;
+    }
+
+    #footer #panding{
+        width: 100%;
+        line-height: 50px;
+        font-size: 19px;
+
+    }
+
+    #footer button{
+        width: 225px;
+        border: none;
+        outline: none;
+        background: rgb(161, 15, 245);
+        font-size: 25px;
+        border-radius: 5px;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 1px;   
+        opacity: 0.6;
+        /* pointer-events: none; */
+    }
+
+    #footer button.vvactive{
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    

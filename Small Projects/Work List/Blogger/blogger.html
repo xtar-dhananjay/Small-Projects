@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work list</title>
+    <!-- This is for font-awesome -->
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #007bff;
+}
+
+/* This is the main Container */
+.Main_Container{
+    width: 400px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 5px;
+}
+
+/* This is Header of This is Container  */
+.Main_Container header{
+    width: 100%;
+    margin-bottom: 27px;
+    text-align: center;
+}
+
+.Main_Container header h1{
+    font-size: 40px;
+}
+
+/* This is the input and add work section */
+.Main_Container .Input_Section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.Input_Section input{
+    width: 100%;
+    height: 43px;
+    border: 1px solid rgb(201, 201, 201);
+    outline: none;
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: #353535;
+}
+
+.Input_Section button{
+    width: 60px;
+    margin-left: 1px;
+    border: none;
+    outline: none;
+    background: #007bff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    opacity: 0.7;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.Input_Section button.Atv_Add_Btn{
+    opacity: 1;
+    background: #007bff;
+    pointer-events: auto;
+}
+
+.Input_Section button i{
+    color: #fff;
+    font-size: 25px;
+    height: 42px;
+    margin-bottom: -2px;
+    line-height: 40px;
+}
+
+/* This is for work list  */
+.Main_Container .Work_List{
+    width: 100%;
+    max-height: 272px;
+    min-height: 272px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: none;
+}
+
+
+/* This is for heding scroll bar   */
+.Work_List::-webkit-scrollbar{
+    width: 0;
+}
+
+.Work_List .List{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    background: rgb(238, 238, 238);
+}
+
+.Work_List .List:hover .List_Detete{
+    right: 0;
+}
+
+.Work_List .List:last-child{
+    margin-bottom: 0;
+}
+
+.List p{
+    font-size: 17px;
+    font-weight: 500;
+    color: #353535;
+}
+
+.List .List_Detete{
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    background: #ff2e2e;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: absolute;
+    right: -47px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.List_Detete i{
+    line-height: 45px;
+    color: #fff;
+}
+
+/* This is for the Footer container  */
+footer{
+    margin-top: 20px;
+    width: 100%;
+}
+
+footer .Footer_Container{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer_Container p{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.Footer_Container button{
+    width: 100px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #007bff;
+    border-radius: 2px;
+    height: 45px;
+    opacity: 0.7;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.Footer_Container button.Atv_Delete{
+    pointer-events: auto;
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+
+    <!-- This is the main Contaienr -->
+    <div class="Main_Container">
+
+        <!-- main header  -->
+        <header><h1>Work List</h1></header>
+        <div class="Input_Section">
+            <input type="text">
+            <button><i class="fas fa-plus"></i></button>
+        </div>
+
+        <!-- This is for working list  -->
+        <div class="Work_List">
+            <!-- <div class="List">
+                <div class="List_Text"><P>Go To Market</P></div>
+                <div class="List_Detete"><i class="fas fa-trash-alt"></i></div>
+            </div>
+            <div class="List">
+                <div class="List_Text"><P>Go To Market</P></div>
+                <div class="List_Detete"><i class="fas fa-trash-alt"></i></div>
+            </div> -->
+        </div>
+
+        <!-- This is Footer  -->
+        <footer>
+            <div class="Footer_Container">
+                <p>You have <span>0</span> pending Works</p>
+                <button>Clear All</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let Add_Btn = document.querySelector(".Input_Section button");
+let Input = document.querySelector(".Input_Section input");
+let Clear_All = document.querySelector(".Footer_Container button");
+let Working_List = document.querySelector(".Work_List");
+let Padding_Work = document.querySelector(".Footer_Container p span");
+
+
+
+// This is plus button working mode
+Input.onkeyup = (e) => {
+    if(Input.value !== ''){
+        Add_Btn.classList.add("Atv_Add_Btn")
+    }else{
+        Add_Btn.classList.remove("Atv_Add_Btn")
+    }
+
+    // This is for enter button on keyboard 
+    if(e.keyCode === 13){
+        console.log(e.target.value);
+        LocalStarge();
+        Input.value = '';
+        Add_Btn.classList.remove("Atv_Add_Btn")
+        
+    }
+
+}
+
+// This is for auto focus in Input
+document.addEventListener("onload", Input.focus())
+
+// if click on plus botton
+Add_Btn.onclick = () => {
+    LocalStarge();
+    Input.value = '';
+    Add_Btn.classList.remove("Atv_Add_Btn")
+}
+
+// in this function all localstarge related mathod 
+LocalStarge();
+function LocalStarge() {
+    User_Value = Input.value;
+    List_Value = localStorage.getItem("List")
+    if(List_Value == null){
+        Arr = []
+    }else{
+        Arr = JSON.parse(List_Value);
+    }
+    if(User_Value !== ''){
+        Arr.push(User_Value)
+    }
+    localStorage.setItem("List", JSON.stringify(Arr))
+    Show_List();
+}
+
+// This is for showing Work List 
+function Show_List(){
+    List_Value = localStorage.getItem("List")
+    Arr = JSON.parse(List_Value);
+    console.log(Arr)
+    Working_List.innerHTML = '';
+    Arr.forEach((e , Index) => {
+    let Get_List_Value  = `<div class="List">
+        <div class="List_Text"><P>${e}</P></div>
+        <div onclick="DeleteNow(${Index})"; class="List_Detete"><i class="fas fa-trash-alt"></i></div>
+        </div>`
+        Working_List.innerHTML += Get_List_Value;
+    });
+   
+    // This for padding works 
+    Get_Pedding = Arr.length;
+    Padding_Work.innerText = Get_Pedding;
+    Delete_Mode()
+}
+
+
+// This is for Delete
+function DeleteNow(Index) {
+    List_Value = localStorage.getItem("List")
+    Arr = JSON.parse(List_Value);
+    Arr.splice(Index, 1);
+    localStorage.setItem("List", JSON.stringify(Arr));
+    Show_List()
+    
+    console.log('This is working fine');
+    Delete_Mode()
+}
+
+// This is for clear botton
+Clear_All.onclick = () =>{
+    localStorage.clear();
+    Working_List.innerHTML = '';
+    Padding_Work.innerText = 0;
+    Delete_Mode()
+};
+
+// This is for clear Btn working mode
+function Delete_Mode() {
+    if(Padding_Work.innerText > 0){
+        Clear_All.classList.add("Atv_Delete");
+    }else{
+        Clear_All.classList.remove("Atv_Delete");
+    }
+}
+
+
+    </script>
+</body>
+</html>

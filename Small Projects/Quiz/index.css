@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+} 
+
+body{
+    background: #007bff;
+}
+
+/* This is for center all div in The page */
+.star-Quiz, .Quiz-info, .quiz-box, .result-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 8px 0 rgb(0, 0, 0, 0.2),
+                0px 6px 20px 0 rgb(0, 0, 0, 0.2);
+}
+
+/* This is for Start Button  */
+.star-Quiz{
+    z-index: 50;
+
+}
+
+.star-Quiz button{
+    width: 200px;
+    background: #fff;
+    font-weight: 600;
+    color: #007bff;
+    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 18px;
+    cursor: pointer;
+}
+
+.star-Quiz.StartBoxHide{        /* This for Hide and Unhide Start Button */
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.96);
+    z-index: -50;
+}
+
+/* This is for Quiz-Info */
+.Quiz-info{
+    width: 540px;
+    background: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.20);
+    transition: all 0.3s ease;
+    z-index: -50;
+}
+
+.Quiz-info.InfoBoxHide{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 50;
+}
+
+.Quiz-info header{
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding: 20px 25px 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.Quiz-info .Info-list{
+    margin-bottom: 25px;
+    font-weight: 400;
+    font-size: 16px;
+    
+    padding: 0px 30px;
+}
+
+.Quiz-info .Info-list span{
+    color: #007bff;
+    font-weight: 600;
+}
+
+.Quiz-info .Info-list .info{
+    margin-bottom: 3px;
+}
+
+.Quiz-info .Info-Btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid lightgray;
+    position: relative;
+    
+    padding: 12px 30px;
+}
+
+.Quiz-info .Info-Btn button{
+    width: 100px;
+    padding: 7px 0px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: #007bff;
+    border: 1px solid #007bff;
+    font-size: 17px;
+    background: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.Quiz-info .Info-Btn button:first-child{
+    margin-right: 20px;
+}
+
+.Quiz-info .Info-Btn button:first-child:hover{
+    background: #007bff;
+    color: #fff;
+}
+
+.Quiz-info .Info-Btn button:last-child{
+    background: #007bff;
+    color: #fff;
+}
+
+.Quiz-info .Info-Btn button:active{
+    transform: scale(0.9);
+}
+
+/* This is for quiz-box */
+.quiz-box{
+    width: 540px;
+    background: #fff;
+    border-radius: 5px;
+    user-select: none;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.20);
+    transition: all 0.3s ease;
+}
+
+.quiz-box.QuizBoxHide{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.quiz-box header{
+    position: relative;
+    z-index: 10;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 3px 5px 1px rgb(0, 0, 0, 0.1);
+}
+
+.quiz-box .quiz-box-header .Quiz-Title{
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.quiz-box-header .timer{
+    padding: 0 10px;
+    height: 45px;
+    width: 155px;
+    background: #cce5ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #b8daff;
+}
+
+.quiz-box-header .timer .Time-Title{
+    font-size: 17px;
+    line-height: 45px;
+}
+
+.quiz-box-header .timer .Time{
+    width: 45px;    
+    padding: 4px;
+    text-align: center;
+    background: #343a40;
+    color: #fff;
+    margin: 10px 0px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 2px;
+}
+
+.quiz-box header .TimeLine{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* width: 50; */
+    height: 4px;
+    background: #007bff;
+}
+
+.quiz-box section{
+    padding: 25px 30px 20px 30px;
+    background: white;
+}
+
+.quiz-box .que-text{
+    font-weight: 600;
+    font-size: 27px;
+}
+
+.quiz-box .option-list{
+    padding: 20px 0;
+}
+
+.quiz-box .option-list .option{
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px 10px;
+    background: aliceblue;
+    border: 1px solid #84c5fe;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.quiz-box .option-list .option.OffPointer{
+    pointer-events: none;
+}
+
+.quiz-box .option-list .option.Currect{         /* This is for currect Answer */
+    border-color: #23903c;
+    background: #d4edda;
+    color: #23903c ;
+}
+
+.quiz-box .option-list .option.Uncurrect{     /* This is for currect Unanswer */
+    border-color: #a42834;
+    background: #f8d7da;
+    color: #a42834;
+}
+
+.quiz-box .option-list .option:hover{
+    background: #cce5ff;
+    color: #004085;
+    border-color: #b8daff;
+}
+
+.quiz-box .option-list .option:last-child{
+    margin-bottom: 0;
+}
+.option-list .option .icon{
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    font-size: 13px;
+    line-height: 23px;
+}
+
+.option-list .option .icon.tick{
+    border-color: #23903c;
+    background: #d4edda;
+    color: #23903c ;
+}
+
+.option-list .option .icon.cross{
+    border-color: #a42834;
+    background: #f8d7da;
+    color: #a42834;
+}
+
+.quiz-box footer{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    padding: 0 30px;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid lightgray;
+
+}
+
+.quiz-box footer .total-que span{
+    width: 100%;
+    display: flex;
+}
+
+.quiz-box footer .total-que span p{
+    margin: 0px 5px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.quiz-box footer button{
+    width: 150px;
+    height: 45px;
+    border: none;
+    outline: none;
+    color: white;
+    background: #007bff;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+}
+
+.quiz-box footer button.ActiveBtn{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* This is for result box */
+.result-box{
+    width: 450px;
+    padding: 25px 30px;
+    background: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.20);
+    transition: all 0.3s ease;
+}
+
+.result-box.ResultBoxHide{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.result-box .icon{
+    font-size: 100px;
+    color: #007bff;
+    text-align: center;
+}
+
+.result-box .complete-text{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+
+}
+
+.result-box .score-text{
+    font-size: 20px;
+    text-align: center;
+}
+
+.result-box .score-text .score-Eogi{
+    font-size: 30px;
+    margin-top: -9px;
+
+}
+
+.result-box .score-text span{
+    display: flex;
+    justify-content: center;
+}
+
+.result-box .score-text span p{
+    margin: 0px 5px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.result-box .buttons{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result-box .buttons button{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.result-box .buttons button:last-child{
+    color: #007bff;
+    background: #fff;
+    border: 1px solid #007bff;
+    margin-left: 10px;
+}
+
+.result-box .buttons button:last-child:hover{
+    background: #007bff;
+    color: #fff;
+
+}
+
+.result-box .buttons button:first-child{
+    color: #fff;
+    background: #007bff;
+    border: 1px solid #007bff;
+    margin-left: 10px;
+}

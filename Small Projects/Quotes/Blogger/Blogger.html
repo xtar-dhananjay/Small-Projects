@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Quotes In The World</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 0 10px;
+    background: #5372f0;
+}
+
+/* This is for main Container */
+.Container{
+    max-width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    min-width: 100px;
+    padding: 15px;
+}
+
+/* This is for Inner main container */
+.Container .Wrapper{
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 10px 10px 0;
+    border: 1px solid lightgray;
+}
+
+/* This is for heading */
+.Wrapper header{
+    font-size: 33px;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    padding: 15px;
+    box-shadow: 0px 3px 5px 1px rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* This is for main Content Container  */
+.Wrapper .content{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 43px;
+}
+
+.content .Quate{
+    display: flex;
+    justify-content: center;
+}
+
+.Quate i{
+    font-size: 18px;
+    color: #5372f0;
+}
+
+.Quate i:first-child{
+    margin: 1px 10px 0 0;
+}
+
+.Quate i:last-child{
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0 1px 10px;
+}
+
+.Quate .QuateText{
+    font-size: 20px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.content .author{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    font-style: italic;
+    margin: 20px 10px 0 0;
+    color: #555555;
+}
+
+.content .author span{
+    margin-left: 10px;
+}
+
+.content .author span{
+    margin-right: 5px;
+}
+
+/* This is for Footer  */
+.Wrapper footer{
+    border-top: 1px solid lightgray;
+    padding: 14px 20px;
+}
+
+.Wrapper footer .features{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.features ul{
+    display: flex;
+    align-items: center;
+}
+
+.features ul li{
+    list-style: none;
+    margin-right: 30px;
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    color: #5372f0;
+    background: #fff;
+    text-align: center;
+    line-height: 46px;
+    border: 2px solid #5372f0;
+    border-radius: 50%;
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.features ul li:hover{
+    background: #5372f0;
+    color: #fff;
+}
+
+/* This is for Next Quotes  */
+.features button{
+    border: none;
+    outline: none;
+    background: #5372f0;
+    border: 2px solid #5372f0;
+    border-radius: 5px;
+    height: 50px;
+    width: 125px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.features button.Loding{
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* This is for responsiv */
+@media (max-width : 460px) {
+    .features ul li{
+        margin-right: 10px;
+        font-size: 18px;
+        width: 45px;
+        height: 45px;
+        line-height: 41px;
+        background: #5372f0;
+        color: #fff;
+        border: 2px solid #5372f0;
+    }
+
+    .features ul li:hover{
+        background: #5372f0;
+        color: #fff;
+    }
+
+    .features button{
+        width: 100px;        
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .Wrapper footer{
+        padding: 14px 0px;
+    }
+
+    .Wrapper header{
+        font-size: 27px;
+        font-weight: 600;
+    }
+    .Quate .QuateText{
+        font-size: 17px;
+        color: rgb(51, 51, 51);
+    }
+}
+    </style>
+
+    <!-- This is for font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="Container">
+      <div class="Wrapper">
+        <header>Best Quates Of The Day</header>
+        <div class="content">
+          <div class="Quate">
+            <i class="fas fa-quote-left"></i>
+            <p class="QuateText"></p>
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <div class="author">--<span></span></div>
+        </div>
+        <footer>
+          <div class="features">
+            <ul>
+              <li class="SpeekeBtn"><i class="fas fa-volume-up"></i></li>
+              <li class="CopyBtn"><i class="fas fa-copy"></i></li>
+              <li class="TwitterBtn"><i class="fab fa-twitter"></i></li>
+            </ul>
+            <div class="NewQuote"><button>New Quote</button></div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+        let NewBtn = document.querySelector(".features button");
+let QuateText = document.querySelector(".content .Quate .QuateText");
+let Author = document.querySelector(".content .author span");
+let SpeechBtn = document.querySelector(".SpeekeBtn");
+let CopyBtn = document.querySelector(".CopyBtn");
+let TwitterBtn = document.querySelector(".TwitterBtn");
+
+NewBtn.addEventListener("click", randomQuate)
+function randomQuate(){
+    NewBtn.classList.add("Loding")
+    NewBtn.innerText = "Loding...";
+    fetch("https://api.quotable.io/random")
+    .then(response => response.json())
+    .then(result => {
+        QuateText.textContent = result.content;
+        Author.innerText = result.author;
+        NewBtn.innerText = "New Quate";
+        NewBtn.classList.remove("Loding")
+
+    })
+};
+randomQuate();
+
+
+// This is for Twitt 
+TwitterBtn.addEventListener("click", Twitt)
+function Twitt(){
+    let TwittUrl = `https://twitter.com/intent/tweet?url=${QuateText.innerText}`
+    window.open(TwittUrl, "_blank")    
+}
+
+// This is for Speak Quotes
+SpeechBtn.addEventListener("click", SpeechNow)
+function SpeechNow(){
+    let speakNow = new SpeechSynthesisUtterance(`${QuateText.innerText} By ${Author.innerText}`)
+    speechSynthesis.speak(speakNow)
+}
+
+// This is for copy Quotes
+CopyBtn.addEventListener("click", copy)
+function copy(){
+    navigator.clipboard.writeText(QuateText.innerText);
+}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: rgba(0, 0, 0, 0.897);
+}
+
+/* Start Building Choose your Player */
+
+.Start{                 /* This is Editing for Home page means Start box container */
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 1;
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.Start.show{
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: -100;
+}
+
+.Start .gamename{      /* Game title */
+    margin-bottom: 10px;
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
+
+.Start .message{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.Start .StartButton{
+    width: 100%;
+    display: flex;
+}
+
+.Start .StartButton button{    /* Starting name page Select box Editing */
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #56baed;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 5px;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.Start .StartButton button:hover{
+    transform: scale(0.96);
+}
+
+.Start .StartButton:last-child{
+    margin-right: 5px;
+}
+
+.Start .StartButton button:first-child{
+    margin-right: 5px;
+}
+
+/* Start building Play ground */
+
+.container{     /* This is main container and all compoment centering help this */
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: -10;
+}
+
+.container.active, .activenow{      /* This is for hidden */
+    opacity: 1;
+    z-index: 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.Playgorund {           /* This is for play ground means 9 boxs on Apply grid */
+    width: 300px;
+    padding: 10px;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);   /* !Important */
+    grid-template-rows: repeat(3,33%);   /* !Important */
+}
+
+.Playgorund .box{       /* This for X and O parent boxs */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    margin: 7px;
+    border-radius: 5px;
+    color: #56baed;
+}
+
+.box span{
+    font-size: 60px;
+    font-weight: 600;
+}
+
+/* Start Building Turn Bar */
+
+.choosePlayer {
+    width: 100%;
+    height: 70px;
+    background: white;
+    padding: 10px 0px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 10px;
+    transition: all 2s ease;
+}
+.choosePlayer span{
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 25px;
+    font-weight: 700;
+    z-index: 1;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.slider{
+    position: absolute;
+    width: 43%;
+    height: 71%;
+    background: #56baed;
+    border-radius: 5px;
+    left: 0%;       /* This is for animation and transition using 50% value to slide the slider perfectly */
+    margin: 0px 0 0px 10px;
+    z-index: 0;
+    transition: all 0.3s ease;
+}
+
+.choosePlayer span:nth-child(2){
+    color: #56baed;
+}
+
+.container.active .choosePlayer span:nth-child(2){
+    color: white;
+}
+
+.container.active .choosePlayer span:first-child{
+    color: #56baed;
+}
+
+.container.active .choosePlayer .slider{
+    left: 50%;
+
+}
+
+/* Start Building draw match */
+.Draw, .WonX{                 /* This is Editing for Draw box container */
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: -100;
+}
+
+.Draw .Drawnow{
+    color: #56baed;
+    display: inline-block;
+}
+
+.Titleend{
+    font-size: 10px;
+    text-align: center;    
+}
+
+.Button{
+    width: 100%;
+    text-align: center;
+}
+
+.Button button{
+    width: 60%;
+    height: 40px;
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    background: #56baed;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.Draw{
+    opacity: 0;
+    z-index: -101;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.Draw.ShowDraw{
+    opacity: 1;
+    z-index: 100;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 100;
+}
+
+.Draw .TitleDraw{
+    font-size: 22px;
+    color: #56baed;
+    pointer-events: none;
+}      
+
+.Button button:hover{
+    transform: scale(0.96);
+}
+
+/* Start Building for won match */
+
+.WonX{
+    opacity: 0;
+    z-index: -102;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: -100;
+}
+
+
+.WonX.ShowWon{
+    opacity: 1;
+    z-index: 100;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.Titleend span{
+    font-size: 25px;
+    color: #56baed;
+    pointer-events: none;
+}      
+    </style>
+</head>
+<body>
+
+    <!-- This is for Starting game match and choosing Player -->
+    <div class="Start">
+        <div class="gamename"><h1>Tic Tec Toe</h1></div>
+        <div class="message"><p>Select Your Player ?</p></div>
+        <div class="StartButton">
+            <button class="PlayerX">Player (X)</button>
+            <button class="PlayerO">Player (O)</button>
+        </div>
+    </div>
+
+    <!-- This is for Playgorund Match -->
+    <div class="container">
+        <div class="play">
+            <div class="choosePlayer">      <!-- This for Choose Player -->
+                <span class="XTurn">X's Turn</span>
+                <span class="OTurn">O's Turn</span>
+                <div class="slider"></div>
+            </div>
+            <div class="Playgorund">        <!-- This is for all X and O boxs-->
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+                <div class="box"><span class="texterea"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is for Draw Match -->
+    <div class="Draw">
+        <div class="Titleend"><h1>Match Has Been <span class="TitleDraw">Drawn</span>!</h1></div>
+        <div class="Button">
+            <button>Replay</button>
+        </div>
+    </div>    
+
+    <!-- This is for Won The Match -->
+    <div class="WonX">
+        <div class="Titleend"><h1>Player <span class="winnow">X</span> Won The Game!</h1></div>
+        <div class="Button">
+            <button>Replay</button>
+        </div>
+    </div>
+
+    <script>
+let playerX = document.querySelector(".Start .StartButton .PlayerX");
+let playerO = document.querySelector(".Start .StartButton .PlayerO");
+let MainContainer = document.querySelector(".container");
+let StartPage = document.querySelector(".Start");
+let Slider = document.querySelector(".slider");
+let Choose = document.querySelector(".container");
+let Oturn = document.querySelector(".choosePlayer .OTurn");
+let Xturn = document.querySelector(".choosePlayer .XTurn");
+let box = document.querySelectorAll(".container .Playgorund .box");
+let textarea = document.querySelectorAll(".texterea");
+let Draw = document.querySelector(".Draw");
+let Won = document.querySelector(".WonX");
+let WonPlayer = Won.querySelector(".WonX .Titleend h1 .winnow");
+let LastBtn = document.querySelectorAll(".Button");
+let DrawSituation = true;
+
+
+// This is for Starting player choosing page to play-ground page;
+playerX.onclick = (()=>{
+    StartPage.classList.add("show");
+    Choose.classList.add("activenow");
+    Array.from(textarea).forEach((e)=>{
+        e.innerHTML = '';
+    });
+});
+playerO.onclick = (()=>{
+    StartPage.classList.add("show");
+    Choose.classList.add("active");
+    Array.from(textarea).forEach((e)=>{
+        e.innerHTML = '';
+    });
+});
+
+// Get Value for playground box value
+let turn = "X";
+let turnO = "O";
+
+// This is for O player
+function turnnowO(){
+    return turnO == "O" ? "X" : "O";
+}
+// This is for X player
+function turnnow(){
+        return turn == "X" ? "O" : "X";
+}
+
+
+// This is for click on any playground box and put the value on clicked box
+    Array.from(box).forEach(e =>{
+        let textarea = e.querySelector(".texterea");
+        e.onclick = () =>{
+            if(textarea.innerText === ''){
+                if(Choose.classList.contains("activenow")){
+                    textarea.innerText = turn;
+                    // turn = turnnow();
+                }else{
+                    textarea.innerText = turnO;
+                    // turnO = turnnowO();
+                }
+                bot();
+                
+                // This is for put the value X and O in the box.
+                if(textarea.innerText == "X"){
+                    Slider.style.left = "50%"
+                    Xturn.style.color = "#56baed";
+                    Oturn.style.color = "#fff";
+                    
+                }else{
+                    Slider.style.left = "0%"
+                    Xturn.style.color = "#fff";
+                    Oturn.style.color = "#56baed";
+                }
+            }
+            result();
+            Drawresult();
+            e.style.pointerEvents = "none";
+            MainContainer.style.pointerEvents = "none";
+        }
+    })
+
+    // This is for result
+    // function result(){
+
+    function result(){
+        let r = [
+            [0,1,2],
+            [3,4,5],
+            [6,7,8],
+            [0,4,8],
+            [2,4,6],
+            [0,3,6],
+            [1,4,7],
+            [2,5,8]
+        ];
+        r.forEach((e) =>{
+
+            if((textarea[e[0]].innerText == textarea[e[1]].innerText) && (textarea[e[2]].innerText == textarea[e[1]].innerText) && (textarea[e[0]].innerText !== '')){
+                if(textarea[e[0]].innerText == "O"){
+                    WonPlayer.innerText = "O"
+                }
+                Won.classList.add("ShowWon");
+                MainContainer.classList.remove("activenow");
+                MainContainer.classList.remove("active");
+                DrawSituation = false;
+            };
+        });
+    };
+
+    // This is for Draw
+    function Drawresult(){
+        if(DrawSituation === true){
+            if((textarea[0].innerText !== '') && (textarea[1].innerText !== '') && (textarea[2].innerText !== '') && (textarea[3].innerText !== '') && (textarea[4].innerText !== '') && (textarea[5].innerText !== '') && (textarea[6].innerText !== '') && (textarea[7].innerText !== '') && (textarea[8].innerText !== '')){
+                Draw.classList.add("ShowDraw");
+                MainContainer.classList.remove("activenow");
+                MainContainer.classList.remove("active");
+
+            };
+        }
+    };
+
+    // This is for Reloade win and draw page
+    Array.from(LastBtn).forEach( (e)=> {
+
+        e.onclick = () =>{
+            location.reload();
+        };        
+        
+    })
+
+    // This for bot
+    function bot(){
+        if(DrawSituation === true){
+            let botarray = [];
+            for (let i = 0; i < textarea.length; i++) {
+                if(textarea[i].innerText == ''){
+                    botarray.push(i);
+                }
+                
+            }
+
+            
+            let randombox = botarray[Math.floor(Math.random() * botarray.length)]       // in this incuation i am confused how to work it botarray;
+            console.log(randombox);
+            if(botarray.length > 0){
+                setTimeout(()=>{
+                    if(Choose.classList.contains("activenow")){
+                        textarea[randombox].innerText = turnO;
+                    }else{
+                        textarea[randombox].innerText = turn;
+                    }
+                    if(textarea[randombox].innerText == "X"){
+                        Slider.style.left = "50%"
+                        Xturn.style.color = "#56baed";
+                        Oturn.style.color = "#fff";
+                        
+                    }else{
+                        Slider.style.left = "0%"
+                        Xturn.style.color = "#fff";
+                        Oturn.style.color = "#56baed";
+                    }
+                    result();
+                    Drawresult();   
+                    textarea[randombox].style.pointerEvents = "none";                 
+                    box[randombox].style.pointerEvents = "none";
+                    MainContainer.style.pointerEvents = "auto";
+                }, randombox * 200)
+            }
+        }
+    };
+    </script>
+
+</body>
+</html>

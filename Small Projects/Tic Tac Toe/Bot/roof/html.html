@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prictice</title>
+    <style>
+        .div1{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            opacity: 1;
+            transform-origin: center;
+            transition: all 0.7s cubic-bezier(0,-1.61,.02,.49);
+            z-index: 2;
+            /* pointer-events: none; */
+        }
+        .div2{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 200px;
+            height: 50px;
+            background: grey;
+            cursor: pointer;
+            z-index: 10;
+            /* transition: all 0.8s ease; */
+        }
+        .button{
+            width: 60px;
+            height: 40px;
+            border: none;
+            outline: none;
+            background: cyan;
+            cursor: pointer;
+        }
+        .box{
+            width: 100px;
+            height: 60px;
+            background: cyan;
+            position: absolute;
+            left: 0%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 1s ease;
+            /* visibility: hidden; */
+            /* display: none; */
+            opacity: 0;
+            z-index: 30;
+            text-align: center;
+            font-size: 40px;
+            line-height: 60px;
+        }
+        .box.active{
+            opacity: 1;
+            left: 80%;
+        }
+
+        .box2{
+            width: 200px;
+            height: 80px;
+            background: cyan;
+            position: absolute;
+            left: 0%;
+            top: 80%;
+            transform: translate(-50%, -50%);
+            transition: all 1s ease;
+            /* visibility: hidden; */
+            /* display: none; */
+            opacity: 0;
+            z-index: 40;
+            text-align: center;
+            font-size: 40px;
+            line-height: 80px;
+        }
+        .box2.active{
+            opacity: 1;
+            left: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2"></div>
+    </div>   
+    <div class="box">box 1</div>
+    <div class="box2">box 2</div>
+    <button class="button">Click Me</button>
+
+    <script>
+        let div1 = document.querySelector(".div1");
+        let button = document.querySelector(".button")
+        let box = document.querySelector(".box");
+        let box2 = document.querySelector(".box2");
+        let div2 = document.querySelector(".div2");
+        
+        div2.onclick = (() => {
+            box.classList.add("active");
+        })        
+        div1.onclick = (() => {
+            box2.classList.add("active");
+        })
+        function now(){
+            if(false){
+                if(true){
+                    console.log("if");
+
+                }
+        }else{
+            he();
+        }
+    }
+    function he(){
+
+        console.log("else");
+    }
+        now();
+
+    </script>
+</body>
+</html>

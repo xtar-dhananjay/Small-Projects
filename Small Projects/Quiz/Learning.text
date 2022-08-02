@@ -1,0 +1,15 @@
+
+1.  for loop = only For
+    but
+    ForEach = Array.ForEach
+
+note -: aap kisi bhi html ke tag array me loop laga rahe to pahle aap use html gat ke 
+array ko ek baar loop ke pas declear jarur kare agar aap esa nahi kate he to vo loop work nahi karega. 
+
+
+2. text content and innerText
+agar hamko values ko compier karna ho to hame textContent ka use nahi karna chahiye
+hame sirf or sirf hame innerText ka use karna chahiye. 
+
+
+3. Prctice of insertAdjacentHTML();

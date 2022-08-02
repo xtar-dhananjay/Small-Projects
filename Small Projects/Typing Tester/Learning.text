@@ -1,0 +1,11 @@
+        1.
+Kisi bhi container me values ko store karne ke liye hame us container me += to shing lagana hota he.
+Example =>{
+    Pragraph[randIndex].split('').forEach(span => {
+        TypingText.innerHTML += `<span>${span}</span>`;
+    });
+}
+Notes :- jesa ki aap uper "TypingText.innerHTML +=" dekh sakte he agar isme hamne + ka shing nahi lagaya hota ho fir isme sirf ek time par shirf ek hi value ko stor kar pata.
+
+        2.
+value ko hamesa function yaa if alse ke bahar hi esume karna chhiye.

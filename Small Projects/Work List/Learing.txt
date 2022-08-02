@@ -1,0 +1,11 @@
+learnings =>
+1. CSS line number 87 iske under ham kese ek bar me sare div or li par 
+    hover effects lagaye.
+
+
+
+
+
+Work 
+1. upload how to hiding scroll.
+2. upload number 1 learning on learning section

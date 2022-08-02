@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+        body{
+            /* width: 100%; */
+            background: rgba(0, 0, 0, 0.897);
+        }
+
+        .game{
+            width: 300px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 10px;
+            padding: 15px 25px;
+        }
+
+        .game header{
+            color: #000;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .game .name{
+            border-bottom: 2px solid #000;
+        }
+        
+        .game .mode{
+            color: #000;
+            text-align: center;
+            font-size: 23px;
+            font-weight: 500;
+            padding: 10px;
+        }
+        
+        .game .choose-mode{
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .choose-mode .bot{
+            width: 100%;
+            margin-bottom: 5px;
+            background: #56baed;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .choose-mode .manual{
+            width: 100%;
+            background: #56baed;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .choose-mode a{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="game">
+        <div class="name"><header>Tic Tac Toe</header></div>
+        <div class="mode">Choose Mode</div>
+        <div class="choose-mode">
+            <a href="Bot/AI.html"><div class="bot"><h2>Play With AI</h2></div></a>
+            <a href="Manual/Manual.html"><div class="manual"><h2>Play With Friend</h2></div></a>
+        </div>
+    </div>
+</body>
+</html>

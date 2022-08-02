@@ -1,0 +1,87 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    padding: 10px;
+}
+
+/* This is for main container  */
+.Container{
+    min-width: 200px;
+    width: 400px;
+    background: #4d4d4d;
+    border-radius: 5px;
+}
+
+/* This is for input  */
+.Container input{
+    width: 100%;
+    height: 125px;
+    padding: 4px;
+    border: none;
+    text-align: right;
+    font-size: 35px;
+    font-weight: 100;
+    border: none;
+    outline: none;
+    background: #252525;
+    color: white;
+    padding-top: 60px;
+}
+
+/* This is for C backspace and / button  */
+.buttons .top{
+    display: flex;
+    
+}
+
+/* This is for get top class button responsive width  */
+.top button:nth-child(1){
+    width: 37%;
+}
+.top button:nth-child(2){
+    width: 38%;
+}
+.top button:nth-child(3){
+    width: 25%;
+}
+
+/* This is for all with out inluding top calss buttons */
+.buttons .top_1, .top_2, .top_3, .top_4{
+    display: flex;
+}
+
+/* This is for all button */
+button{
+    width: 100%;
+    border: 1px solid #525252;
+    outline: none;
+    height: 95px;
+    border-radius: 5px;
+    background: #4d4d4d;
+    color: white;
+    font-size: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* This is for all button hover effects */
+button:hover{
+    background: #585858;
+}
+
+@media (max-width: 900px) {
+    button:hover{
+        background: #4d4d4d;
+    }
+}

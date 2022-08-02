@@ -1,0 +1,33 @@
+Problem No: 1
+add button on not remove "active" class
+
+    if(userData != 0)
+
+Problem 2 
+not diffine array in localstorage 
+
+        if(taskData == null)
+
+Problem 3 
+not show tasks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+self solv Problem 
+
+Problem 1
+clearAll button on click but ul is not clear.
+
+
+

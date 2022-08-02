@@ -1,0 +1,284 @@
+/* all get all root color with name */
+:root{
+    --First: #ffffff;
+    --DarkGray: #696969;
+    --Black: #000000;
+    --Purple: #ae22ff;
+    --Gray: lightgray;
+}
+
+
+/* Import all google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--Purple);
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: var(--Purple);
+}
+
+/* This is for Container  */
+.Main_Container{
+    width: 400px;
+    position: relative;
+    background: var(--First);
+    border-radius: 10px;
+    padding: 0 10px;
+    box-shadow: 0px 6px 15px #00000026;
+    overflow: hidden;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    margin: 40px 0 ;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header span{
+    font-size: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+
+header h1{
+    font-size: 25px;
+}
+
+/* This is for the Song img  */
+.Img{
+    width: 100%;
+    text-align: center;
+}
+
+.Img img{
+    border-radius: 10px;
+}
+
+/* This is for song name and artist name*/
+.Names{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.Song_Name{
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    color: var(--Black);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.Song_Artist{
+    font-size: 24px;
+    color: var(--DarkGray);
+}
+
+/* This is for progras bar  */
+.Progras_Section{
+    width: 100%;
+    height: 39px;
+    margin-top: 35px;
+    padding: 0 30px;
+}
+
+.Progras_Section .Progras_Timer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Progras_Section .Progras_Bar{
+    width: 100%;
+    height: 6px;
+    background: var(--Gray);
+    border-radius: 4px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.Progras_Bar .Progras{
+    width: 0%;
+    height: inherit;
+    border-radius: 5px;
+    background: var(--Purple);
+    position: relative;
+}
+
+.Progras_Bar .Progras::before{
+    content: '';
+    position: absolute;
+    right: -8px;
+    transform: translateY(-50%);
+    margin-left: 1px;
+    border-radius: 50%;
+    top: 50%;
+    cursor: pointer;
+    background: var(--Purple);
+    transition: all 0.5s ease;
+}
+
+.Progras_Bar:hover .Progras::before{
+    width: 18px;
+    height: 18px;
+    
+}
+
+/* This is for all options */
+.Option{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0 20px;
+    user-select: none;
+}
+
+.Option div span{
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;  
+}
+
+.Option .Puse_Resu {
+    width: 62px;
+    height: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 4px solid var(--Purple);
+}
+
+.Option .Puse_Resu span{
+    font-size: 40px;
+}
+
+.Option .Next, .Option .Prev{
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+
+.Option .Next span, .Option .Prev span{
+    font-size: 50px;
+}
+
+
+.Current, .Duration{
+    color: var(--Black);
+}
+
+/* Play List  */
+.Plya_List{
+    position: absolute;
+    width: 100%;
+    background: var(--First);
+    bottom: -53%;
+    left: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    transition: all 0.2s ease;
+}
+
+.Plya_List.active{
+    bottom: 0;
+}
+
+.Plya_List::-webkit-scrollbar{
+    width: 0;
+}
+
+.Plya_List .Plya_List_header{
+    padding: 10px 0 20px;
+}
+
+.Plya_List .Plya_List_header, .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.Plya_List .Plya_List_header .close{
+    cursor: pointer;
+    user-select: none;
+}
+
+.Plya_List_header h2{
+    margin-left: 10px;
+    color: var(--Black);
+}
+
+.Plya_List_header span{
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--Black);
+}
+
+.Plya_List ul li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--Gray);
+    padding-bottom: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.Plya_List ul li:last-child{
+    margin-bottom: 0;
+}
+
+.Details .PSong_Name{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--DarkGray);
+}
+
+.Details .PArtist_Name{
+    font-size: 20px;
+    color: var(--Black);
+}
+
+.Sec{
+    font-size: 19px;
+    color: var(--DarkGray);
+}
+
+.Plya_List ul li.LiActive .PSong_Name{
+    color: var(--Purple);
+}
+
+.Plya_List ul li.LiActive .PArtist_Name{
+    color: var(--Purple);
+}
+
+.Plya_List ul li.LiActive .Sec{
+    color: var(--Purple);
+}
+
+

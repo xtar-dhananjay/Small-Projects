@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5556AD;
+    padding: 10px;
+}
+
+.Container{
+    width: 350px;
+    min-width: 200px;
+    background: white;
+    border-radius: 5px;
+    padding: 20px 25px;
+}
+
+header{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.Input_Section{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.Input_Section label{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.Input_Section textarea{
+    resize: none;
+    height: 100px;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 10px 10px;
+    font-size: 16px;
+}
+
+.Speech_Section{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.Speech_Section label{
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.Speech_Section select{
+    border: 1px solid lightgray;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+button{
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    height: 45px;
+    font-size: 17px;
+    font-weight: 500;
+    background: #5556AD;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+

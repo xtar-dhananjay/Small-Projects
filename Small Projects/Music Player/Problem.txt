@@ -1,0 +1,16 @@
+1. .innerHTML mathod is not set audio file in html.
+2. i am not access clintwidth value dynamically becouse if i get clientWdith
+value so value is every time changed so i am geting clientWidht vlaue like 
+this.{
+
+Direct Access =>
+    let clientWidth = Progras_Bar.clientWidth // This is working 
+
+    ---------------------------------------------------------------------------------
+
+Dynamically Access =>
+    Progras_Bar.onclick = (event) =>{               // is not working. but Why this is not working 
+        let clientWidth = event.srcElement.clientWidth
+    };
+
+}

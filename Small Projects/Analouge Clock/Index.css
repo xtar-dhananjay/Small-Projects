@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    background: #dde1e7;
+}
+
+.Clock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background: #dde1e7;
+    border-radius: 50%;
+    box-shadow: -3px -3px 7px #ffffff73,
+                3px 3px 5px rgba(94, 104, 121, 0.288)
+}
+
+.Clock::before{
+    position: absolute;
+    content: '';
+    width: 270px;
+    height: 270px;
+    background: #dde1e7;
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 7px #ffffff73,
+                inset 3px 3px 5px rgba(94, 104, 121, 0.288)
+}
+
+.Clock::after{
+    position: absolute;
+    content: '';
+    width: 170px;
+    height: 170px;
+    background: #dde1e7;
+    border-radius: 50%;
+    box-shadow: -1px -1px 5px #ffffff73,
+                 1px 1px 3px rgba(94, 104, 121, 0.288)
+}
+
+.Clock .nut-1{
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    z-index: 9;
+    position: absolute;
+}
+
+.Clock .nut-2{
+    width: 11px;
+    height: 11px;
+    background: #006eff;
+    border-radius: 50%;
+    z-index: 11;
+    position: absolute;
+}
+.Clock .dot{
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    z-index: 10;
+}
+
+.Clock .dot div{
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    background: #000;
+    z-index: 100;
+}
+
+.dot div:nth-child(1){
+    transform: rotate(30deg) translateY(-121px);
+}
+.dot div:nth-child(2){
+    transform: rotate(60deg) translateY(-121px);
+}
+.dot div:nth-child(3){
+    background: #006eff;
+    transform: rotate(90deg) translateY(-121px);
+}
+.dot div:nth-child(4){
+    transform: rotate(120deg) translateY(-121px);
+}
+.dot div:nth-child(5){
+    transform: rotate(150deg) translateY(-121px);
+}
+.dot div:nth-child(6){
+    background: #006eff;
+    transform: rotate(180deg) translateY(-121px);
+}
+.dot div:nth-child(7){
+    transform: rotate(210deg) translateY(-121px);
+}
+.dot div:nth-child(8){
+    transform: rotate(240deg) translateY(-121px);
+}
+.dot div:nth-child(9){
+    background: #006eff;
+    transform: rotate(270deg) translateY(-121px);
+}
+.dot div:nth-child(10){
+    transform: rotate(300deg) translateY(-121px);
+}
+.dot div:nth-child(11){
+    transform: rotate(330deg) translateY(-121px);
+}
+.dot div:nth-child(12){
+    background: #006eff;
+    transform: rotate(360deg) translateY(-121px);
+}
+
+
+.sec-hand, .min-hand, .hr-hand{
+    position: absolute;
+    width: 11px;
+    height: 11px;
+}
+
+.hr, .sec, .min{
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.sec-hand, .sec{
+    z-index: 10;
+}
+
+.min-hand, .min{
+    z-index: 9;
+}
+
+.hr-hand, .hr{
+    z-index: 8;
+}
+
+.sec::before{
+    content: '';
+    position: absolute;
+    margin-top: 5px;
+    transform: translateY(-80%);
+    width: 5px;
+    height: 135px;
+    background: #006eff;
+    /* display: none; */
+}
+.sec::after{
+    content: '';
+    position: absolute;
+    width: 10px;
+    top: 30px;
+    border-radius: 10px;
+    height: 50px;
+    background: #006eff;
+    /* display: none; */
+}
+
+.min::before{
+    content: '';
+    position: absolute;
+    margin-top: 5px;
+    top: -40px;
+    transform: translateY(-100%);
+    width: 2px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 65px solid red;
+    /* display: none; */
+}
+
+.min::after{
+    content: '';
+    position: absolute;
+    margin-top: 5px;
+    transform: translateY(-100%);
+    width: 2px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 41px solid red;
+    /* display: none; */
+}
+
+
+.hr::before{
+    content: '';
+    position: absolute;
+    margin-top: 5px;
+    top: -30px;
+    transform: translateY(-100%);
+    width: 2px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 55px solid #000;
+    /* display: none; */
+}
+
+.hr::after{
+    content: '';
+    position: absolute;
+    margin-top: 5px;
+    transform: translateY(-100%);
+    width: 4px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 31px solid #000;
+    /* display: none; */
+}
+
+

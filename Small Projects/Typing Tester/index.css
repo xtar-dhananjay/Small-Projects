@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff7451;
+}
+
+.MainContainer{
+    width: 800px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 35px;  
+}
+
+.MainContainer input{
+    position: absolute;
+    opacity: 0;
+    z-index: -100;
+}
+
+.MainContainer .Container{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 18px 25px 0px;
+}
+
+.Container .paragraph {
+    font-size: 20px;
+    text-align: justify;
+    max-height: 300px;
+    overflow-y: auto;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.Container .paragraph span.highLight{
+    color: #56964f;
+    position: relative;
+}
+
+.Container .paragraph span.highLight::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    bottom: 0%;
+    height: 4px;
+    background: #56964f;
+    border-radius: 3px;
+    opacity: 0;
+    animation: blink 0.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+    50%{
+        opacity: 1;
+    }
+}
+
+.Container .paragraph p span.active{
+    color: #56964f;
+}
+
+.Container .paragraph p span.unactive{
+    background: #ffe2e2;
+    color: red;
+    /* border-radius: 4px; */
+}
+
+.paragraph::-webkit-scrollbar{
+    width: 0;
+}
+
+.result{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    /* height: 80px; */
+    border-top: 1px solid #ccc;
+    padding: 12px 0;
+}
+
+.result .results{
+    width: calc(100% - 150px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result .results li{
+    list-style: none;
+    display: flex;
+    text-align: center;
+}
+
+.results li:not(:first-child){
+    border-left: 1px solid #ccc;
+    padding-left: 30px;
+}
+
+.result .results li span,b{
+    margin-left: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.result .results li p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.result button{
+    width: 105px;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    background: #ff7451;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.result button:active{
+    /* transform: translate(-50%, -50%) scale(); */
+    transform: scale(0.9);
+}

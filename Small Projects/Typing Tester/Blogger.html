@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff7451;
+}
+
+.MainContainer{
+    width: 800px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 35px;  
+}
+
+.MainContainer input{
+    position: absolute;
+    opacity: 0;
+    z-index: -100;
+}
+
+.MainContainer .Container{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 18px 25px 0px;
+}
+
+.Container .paragraph {
+    font-size: 20px;
+    text-align: justify;
+    max-height: 300px;
+    overflow-y: auto;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.Container .paragraph span.highLight{
+    color: #56964f;
+    position: relative;
+}
+
+.Container .paragraph span.highLight::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    bottom: 0%;
+    height: 4px;
+    background: #56964f;
+    border-radius: 3px;
+    opacity: 0;
+    animation: blink 0.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+    50%{
+        opacity: 1;
+    }
+}
+
+.Container .paragraph p span.active{
+    color: #56964f;
+}
+
+.Container .paragraph p span.unactive{
+    background: #ffe2e2;
+    color: red;
+    /* border-radius: 4px; */
+}
+
+.paragraph::-webkit-scrollbar{
+    width: 0;
+}
+
+.result{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    /* height: 80px; */
+    border-top: 1px solid #ccc;
+    padding: 12px 0;
+}
+
+.result .results{
+    width: calc(100% - 150px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result .results li{
+    list-style: none;
+    display: flex;
+    text-align: center;
+}
+
+.results li:not(:first-child){
+    border-left: 1px solid #ccc;
+    padding-left: 30px;
+}
+
+.result .results li span,b{
+    margin-left: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.result .results li p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.result button{
+    width: 105px;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    background: #ff7451;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.result button:active{
+    /* transform: translate(-50%, -50%) scale(); */
+    transform: scale(0.9);
+}
+    </style>
+</head>
+<body>
+    <div class="MainContainer">        
+        <input type="text">
+        <div class="Container">
+            <div class="paragraph">
+                <P></P>
+            </div>
+            <div class="result">
+                <ul class="results">
+                    <li>
+                        <p>Time Left:</p>
+                        <span><b class="time">60</b>s</span>
+                    </li>
+                    <li>
+                        <p>Mistakes:</p>
+                        <span class="Mistakes">0</span>
+                    </li>
+                    <li>
+                        <p>WPM:</p>
+                        <span class="WPM">0</span>
+                    </li>
+                    <li>
+                        <p>CPM:</p>
+                        <span class="CPM">0</span>
+                    </li>
+                </ul>
+                    <Button>Try Again</Button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+let TypingText = document.querySelector(".Container .paragraph p");
+let inpField = document.querySelector(".MainContainer input");
+let Mistakes = document.querySelector(".result .results .Mistakes");
+let CPM = document.querySelector(".result .results .CPM");
+let time = document.querySelector(".result .results .time");
+let WPM = document.querySelector(".result .results .WPM");
+let tryBtn = document.querySelector(".result button");
+
+// This is all paragraph on this site
+let Pragraph = ["I saw a small boy standing in the woods and crying. His dear tree had been felled. He was inconsolable. For that little boy it was not just a tree. It was like a friend he would rush to everyday after school, a friend who would hide him from those nasty bullies, a friend who always had sweet fruits for him, and a friend who would wrap him in a warm embrace and put him to sleep. “This is murder”, he screamed as I tried to console him. He said he would avenge the murder, he kept saying he would.",
+"Once upon a time, in a forest, there lived a monkey who resided on a jamoon (berry) tree, which was on the banks of a river. In the same forest, there lived a crocodile and his wife. One day, the crocodile came to the banks of the river and rested under the tree. The kindhearted monkey offered him some fruits. The crocodile came back the next day for more fruits, as he loved them. As days passed by, the crocodile and the monkey became good friends.",
+"One day, the monkey sent some fruits for the crocodile’s wife. She ate the fruits and liked them, but was jealous, as she didn’t like her husband spending time with the monkey. She told her husband, “If the fruits are so juicy, I wonder how sweet the monkey’s heart would be. Get me the heart of the monkey.” The crocodile was not willing to kill his friend, but had no choice.",
+"A farmer couple had a pet mongoose. One day, the farmer and his wife had to urgently go out of the house for work, and so they left the mongoose with their infant, assured that he would guard their baby well. While they were gone, a snake stealthily entered the house and moved towards the cradle to attack the infant. The smart mongoose fought and killed the snake in order to protect the baby.",
+"Once upon a time, beside a lake, there lived a tortoise and two geese who were great friends. As the lake was drying, the geese decided to migrate to a new place. The tortoise also wanted to move with them, but he couldn’t fly, and so he pleaded the geese to take him with them. After trying really hard to convince them, finally, the geese agreed. They held a stick with their beaks and asked the tortoise to hold the stick with his mouth, warning him to not open his mouth and let go of the stick.",
+"Once upon a time, a jackal wandered away from his jungle and reached a deserted battlefield. He was very hungry, and so he started looking for food, when heard a strange sound. The jackal got scared and decided to run away, but then he thought, “Let me carefully see who is making that sound.” As he looked around, he found an abandoned drum lying next to a tree, and as the wind blew, the branches of the tree rubbed against it, making the sound. He was relieved and continued to search for food.",
+"They asked their woodpecker friend to help them. The woodpecker, along with his friends, the fly and the frog, devised a plan. The frog asked the fly to buzz near the elephant’s ear. He said, “When the elephant closes his eyes, woodpecker, you must pierce his eyes. The elephant will stand up and try to find water. I will croak far away and the elephant will think there’s water around and reach the place. We will create a big pit and the elephant will fall into it.”",
+"Frisbees are fun toys that everyone loves to play with. The way Frisbees take off into the air after a launch is exhilarating, making us want to keep at it. To kick the fun up several notches, you can organize several Frisbee games that involve more people and challenging activities. Once you learn how to control the curve and the flight of a Frisbee, you can use your skill to strike targets at a distance at fun games. The next time you arrange an outdoor party, be sure to try out one of these frisbee sport ideas. ",
+"Enjoying a cup of tea while sitting on my balcony on a Sunday morning, suddenly, I felt a deep pain in my chest. I thought that this was the last moment of my life. I wanted to call my daughter, my husband and everybody to say the final Good Bye, but couldn’t do so. I was thinking of their life without me. I was just worried what would happen to them if I collapsed. I just prayed, “O God! Give me some more time.” I thought about my daughter who was in the first year of her college life I had always thought of giving her a wonderful life in which she had all her dreams fulfilled. Then my thoughts shifted towards my husband who wouldn’t be able to",
+"family again but it was as if I was dumb. No words came out of my mouth. I knew 1 should not lose my wits. I must do something to keep going until my family noticed me. Suddenly, my eyes fell on the mobile phone on the table nearby. I picked it up and dialed 102.1 don’t remember what happened after that when I awoke I found myself in a hospital room, with a team of doctors bending over me and watching me. Later, I was told that I had been carried in an ambulance to a multi-specialty hospital at the nick of time. Delay would have been fatal for me. I was happy. I could still see this wonderful world. I immediately decided to"];
+
+// esume values
+let timestart;
+let maxTime = 60;
+let timeleft = maxTime;
+let carcIndex = Mistakenow = 0;
+let over = true;        
+let timernow = false; 
+// This is for random Paragraph.
+function randomParagraphs(){
+    let randIndex = Math.floor(Math.random() * Pragraph.length)     // This is for random paragraph mathod 
+    TypingText.innerHTML = '';
+    Pragraph[randIndex].split('').forEach(span => {
+        spanTag = `<span>${span}</span>`;     // This is for passing paragraph in (.container p) html 
+        TypingText.innerHTML += spanTag;
+    });
+    // This is for auto focus for input tag in (.MainContainer input) html
+    document.addEventListener("keydown", () => inpField.focus())
+    TypingText.addEventListener("click", () => inpField.focus())
+}
+randomParagraphs();
+function checkTyping(){
+    let TypeingChar = TypingText.querySelectorAll("span");      // This is for get all span value's 
+    let TypedChar = inpField.value.split('')                   // This is for get all input values in array
+    if(over === true){                          // This is for time over and input not containe values
+        if(timernow == false){
+            timestart = setInterval(update, 1000);
+            timernow = true;
+        }
+        
+        
+        wpnNow = Math.round((((carcIndex - Mistakenow)/ 5) / (maxTime - timeleft)) * 60)        // This is for geting WPS value and put the value in (.WPS) html.
+        wpnNow = wpnNow < 0 || !wpnNow || wpnNow === Infinity ? 0 : wpnNow;             // This is for currect result becouse without this in result show is Nan, Infifity so this solve problem halp this line code.
+    
+        WPM.innerText = wpnNow;
+        // This is for backspace actions including remove all span decoration class's.
+        if(TypedChar[carcIndex] == null){
+            carcIndex--;
+            TypeingChar[carcIndex].classList.remove("active");
+            TypeingChar[carcIndex].classList.remove("highLight");
+            if(TypeingChar[carcIndex].classList.contains("unactive")){
+                TypeingChar[carcIndex].classList.remove("unactive");
+                Mistakenow--;
+                Mistakes.innerText = Mistakenow;             // This is for click backspace update show mistakes
+            }else if(!TypeingChar[carcIndex].classList.contains("unactive")){   // This is for click backspace and get the CPM value 
+                CpmNow--;
+                CPM.innerText = CpmNow;
+            }
+            
+            // This is for key action's including add all span decoration class's.
+        }else{
+            if(TypeingChar[carcIndex].innerText === TypedChar[carcIndex]){      // This is for put condition for input.value === paragraph.span.innerText.
+                TypeingChar[carcIndex].classList.add("active");
+            }else{
+                TypeingChar[carcIndex].classList.add("unactive");
+                Mistakenow++;
+                Mistakes.innerText = Mistakenow;             // This is for show mistakes
+            }
+    
+            // This is for geting value for CPM and update CPM value
+            CpmNow = carcIndex+1 - Mistakenow;
+            CPM.innerText = CpmNow;
+    
+            carcIndex++;
+        }
+        // This is for current character line animation and highlight.
+        TypeingChar.forEach(span => span.classList.remove("highLight"))     // This is for removing all highlight calss in span.
+        TypeingChar[carcIndex].classList.add("highLight");                  // This is for current word typing blink
+    }
+
+}
+
+let TypeingChar = TypingText.querySelectorAll("span");      // This is for get all span value's 
+TypeingChar[carcIndex].classList.add("highLight");      // This is for adding Starting typing word blinking.
+
+function update(){
+    if(timeleft > 0){
+        timeleft--;
+        time.innerText = timeleft;
+        if(timeleft == 0){
+            over = false;
+        }
+    }else{
+        clearInterval(timestart);
+    }
+};
+
+// This is for try again button on click then this script work it.
+tryBtn.onclick = () =>{
+    randomParagraphs()
+    inpField.value = '';
+    carcIndex = Mistakenow = 0;
+    over = true;
+    CPM.innerText = 0;
+    CpmNow = '';
+    Mistakenow = 0;
+    Mistakes.innerText = 0; 
+    wpnNow = 0;
+    WPM.innerText = 0;
+    timeleft = maxTime;
+    time.innerText = timeleft;
+    let TypeingChar = TypingText.querySelectorAll("span");      // This is for get all span value's 
+    TypeingChar[carcIndex].classList.add("highLight");      // This is for adding Starting typing word blinking.
+    if(!clearInterval(timestart)){
+        clearInterval(timestart);
+    }
+    timernow = false;
+
+};
+
+inpField.addEventListener("input", checkTyping)     // This is for calling and chacking everytime and typing.
+    </script>
+
+</body>
+</html>
